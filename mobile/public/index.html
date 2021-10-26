@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>mobile</title>
+    <style>
+      html,
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      body {
+        position: relative;
+        font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      #load {
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        overflow: hidden;
+        background-color: #dd001b;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 10px;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="load">
+      
+    </div>
+    <div id="app">
+     
+     
+    </div>
+    
+    <script>
+      const load = document.getElementById('load')
+      const body = document.getElementsByTagName('body')[0]
+      let data = sessionStorage.getItem('load');
+        console.log(!data);
+      if (!data) {
+        setLoad(body, load)
+      }
+
+      function setLoad(body, load) {
+        console.log('执行了');
+        body.style.overflow = 'hidden';
+        load.style.display = 'block';
+        sessionStorage.setItem('load', 1);
+        setTimeout(() => {
+          load.style.display = 'none'
+          body.style.overflow = '';
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
